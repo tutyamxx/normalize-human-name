@@ -6,7 +6,7 @@ describe('normalizeHumanName()', () => {
         test('Should capitalize simple lowercase names', () => expect(normalizeHumanName('john doe')).toBe('John Doe'));
         test('Should fix all-caps names', () => expect(normalizeHumanName('JANE DOE')).toBe('Jane Doe'));
         test('Should trim leading and trailing whitespace', () => expect(normalizeHumanName('   marcus aurelius   ')).toBe('Marcus Aurelius'));
-        test('Should collapse multiple internal spaces into one', () => expect(normalizeHumanName('william    shakespeare')).toBe('William Shakespeare'));
+        test('Should collapse multiple internal spaces into one', () => expect(normalizeHumanName('william     shakespeare')).toBe('William Shakespeare'));
         test('Should handle mixed casing strings correctly', () => expect(normalizeHumanName('eLoN mUsK')).toBe('Elon Musk'));
     });
 
@@ -22,17 +22,25 @@ describe('normalizeHumanName()', () => {
         test('Should handle multiple honorifics', () => expect(normalizeHumanName('sir prof smith')).toBe('Sir. Prof. Smith'));
     });
 
-    // --| Section: Suffixes
-    describe('Suffixes', () => {
-        test('Should force suffixes to uppercase', () => {
+    // --| Section: Suffixes & Roman Numerals
+    describe('Suffixes and Roman Numerals', () => {
+        test('Should force standard suffixes to uppercase', () => {
             expect(normalizeHumanName('robert downey jr')).toBe('Robert Downey JR');
             expect(normalizeHumanName('tony stark phd')).toBe('Tony Stark PHD');
         });
 
-        test('Should handle Roman numeral suffixes', () => {
+        test('Should handle varied Roman numeral suffixes via Regex', () => {
             expect(normalizeHumanName('king henry viii')).toBe('King Henry VIII');
             expect(normalizeHumanName('louis v')).toBe('Louis V');
             expect(normalizeHumanName('thurston howell iii')).toBe('Thurston Howell III');
+            expect(normalizeHumanName('louis xiv')).toBe('Louis XIV');
+            expect(normalizeHumanName('pope john paul ii')).toBe('Pope John Paul II');
+        });
+
+        test('Should NOT uppercase words that are not valid Roman numerals', () => {
+            // --| "did" and "mix" contain Roman characters but in invalid sequences
+            expect(normalizeHumanName('john did')).toBe('John Did');
+            expect(normalizeHumanName('dj mix')).toBe('Dj Mix');
         });
     });
 
@@ -118,7 +126,7 @@ describe('normalizeHumanName()', () => {
         });
     });
 
-    // --| Section: Safety and Types (Resilience)
+    // --| Section: Resilience
     describe('Resilience', () => {
         test('Should return an empty string for null or undefined', () => {
             expect(normalizeHumanName(null)).toBe('');

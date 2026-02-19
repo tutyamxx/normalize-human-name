@@ -1,6 +1,6 @@
 {
   "name": "normalize-human-name",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "🎓 Normalize real human names the way they’re actually written — fixes casing, particles, honorifics, suffixes, hyphenation, Mc/Mac and O’ prefixes into clean, properly formatted names.",
   "main": "index.js",
   "module": "index.js",

@@ -1,6 +1,6 @@
 /**
  * normalize-human-name - 🎓 Normalize real human names the way they’re actually written — fixes casing, particles, honorifics, suffixes, hyphenation, Mc/Mac and O’ prefixes into clean, properly formatted names.
- * @version: v1.0.3
+ * @version: v1.0.4
  * @link: https://github.com/tutyamxx/normalize-human-name
  * @license: MIT
  **/
@@ -29,9 +29,12 @@ const normalizeHumanName = (fullName) => {
 
     const categories = {
         honorifics: new Set(['mr', 'mrs', 'ms', 'dr', 'prof', 'sir', 'madam', 'lord', 'lady', 'st']),
-        suffixes: new Set(['jr', 'sr', 'ii', 'iii', 'iv', 'v', 'phd', 'md', 'viii']),
+        suffixes: new Set(['jr', 'sr', 'phd', 'md']),
         particles: new Set(['da', 'de', 'del', 'della', 'der', 'di', 'la', 'le', 'van', 'von', 'den', 'al', 'bin', 'ibn'])
     };
+
+    // --| Regex for Roman Numerals (I to XXXIX). Capped at 39 to avoid words like 'MIX' or 'DI' since it might cause issues
+    const romanNumeralRegex = /^(?:X{0,3})(?:IX|IV|V?I{0,3})$/i;
 
     // --| List of common names starting with Mac that are NOT prefixes
     const macExclusions = new Set(['macy', 'mace', 'mack']);
@@ -47,11 +50,12 @@ const normalizeHumanName = (fullName) => {
         // --| Handle Titles
         if (categories?.honorifics?.has?.(cleanToken)) return capitalize(cleanToken) + '.';
 
-        // --| Handle Suffixes
-        if (categories?.suffixes?.has?.(cleanToken)) return cleanToken?.toUpperCase?.();
-
-        // --| Handle Middle Particles (includes Arabic particles in Latin script like 'bin')
+        // --| Handle Middle Particles (Check this BEFORE Roman Numerals to catch 'di')
         if (categories?.particles?.has?.(cleanToken) && !isBoundary) return cleanToken;
+
+        // --| Handle Suffixes & Roman Numerals (Exclude 'di' as a numeral to be safe)
+        const isRoman = romanNumeralRegex.test(cleanToken) && cleanToken !== 'di';
+        if (categories?.suffixes?.has?.(cleanToken) || isRoman) return cleanToken?.toUpperCase?.();
 
         // --| Handle Complex Names
         return cleanToken?.split?.(/([-’])/)?.map?.(segment => {
