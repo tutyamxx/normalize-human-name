@@ -31,6 +31,9 @@
 | **Exclusion Logic** | `macy gray` | `Macy Gray` | Prevents "Mac" logic from triggering on names that aren't actually prefixes. |
 | **Unicode Normalization** | `REN\u0065\u0301` | `René` | Collapses decomposed accents into single characters before processing. |
 | **Sanitization** | `  JOHN    DOE  ` | `John Doe` | Collapses internal whitespace and trims the string. |
+| **Arabic Script** | `نجيب محفوظ` | `نجيب محفوظ` | Detects `Arabic Unicode` script and returns `as-is` (Arabic has no concept of casing). |
+| **CJK Script** | `佐藤  健` | `佐藤健` | Detects `Han`/`Hiragana`/`Katakana`/`Hangul` and removes internal whitespace. |
+| **Type Safety** | `null` or `12345` | `''` | Uses optional chaining and type checks to fail gracefully without throwing errors. |
 
 # 📦 Install via [NPM](https://www.npmjs.com/package/normalize-human-name)
 
