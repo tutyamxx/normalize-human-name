@@ -1,0 +1,61 @@
+{
+  "name": "normalize-human-name",
+  "version": "1.0.1",
+  "description": "🎓 Normalize real human names the way they’re actually written — fixes casing, particles, honorifics, suffixes, hyphenation, Mc/Mac and O’ prefixes into clean, properly formatted names.",
+  "main": "index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    "require": "./index.js",
+    "import": "./index.js",
+    "types": "./index.d.ts"
+  },
+  "scripts": {
+    "test": "jest --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tutyamxx/normalize-human-name.git"
+  },
+  "keywords": [
+    "name",
+    "normalize",
+    "normalizer",
+    "human-name",
+    "name-format",
+    "string",
+    "string-utils",
+    "parser",
+    "name-parser",
+    "text",
+    "formatting",
+    "capitalization",
+    "case",
+    "proper-case",
+    "title-case",
+    "honorific",
+    "suffix",
+    "mc",
+    "mac",
+    "apostrophe",
+    "hyphenated",
+    "unicode",
+    "input-cleanup",
+    "forms",
+    "signup",
+    "crm",
+    "identity",
+    "data-cleaning",
+    "data-normalization"
+  ],
+  "author": "tuty",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tutyamxx/normalize-human-name/issues"
+  },
+  "homepage": "https://github.com/tutyamxx/normalize-human-name#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}
