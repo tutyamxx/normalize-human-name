@@ -54,12 +54,12 @@ describe('normalizeHumanName()', () => {
     // --| Section: Arabic Script
     describe('Arabic Script Support', () => {
         test('Should preserve Arabic script and fix spacing', () => {
-            // "Zaha Hadid" in Arabic
+            // --| "Zaha Hadid" in Arabic
             expect(normalizeHumanName(' زها  حديد ')).toBe('زها حديد');
         });
 
         test('Should handle Arabic script without attempting to case', () => {
-            // "Naghib Mahfouz"
+            // --| "Naghib Mahfouz"
             expect(normalizeHumanName('نجيب محفوظ')).toBe('نجيب محفوظ');
         });
     });

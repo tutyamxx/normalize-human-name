@@ -35,6 +35,8 @@
 | **CJK Script** | `佐藤  健` | `佐藤健` | Detects `Han`/`Hiragana`/`Katakana`/`Hangul` and removes internal whitespace. |
 | **Type Safety** | `null` or `12345` | `''` | Uses optional chaining and type checks to fail gracefully without throwing errors. |
 
+---
+
 # 📦 Install via [NPM](https://www.npmjs.com/package/normalize-human-name)
 
 ```bash
