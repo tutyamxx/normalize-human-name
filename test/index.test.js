@@ -17,6 +17,17 @@ describe('normalizeHumanName()', () => {
             expect(normalizeHumanName('prof xavier')).toBe('Prof. Xavier');
         });
 
+        test('Should handle religious and formal titles', () => {
+            expect(normalizeHumanName('rev brown')).toBe('Rev. Brown');
+            expect(normalizeHumanName('rabbi cohen')).toBe('Rabbi. Cohen');
+            expect(normalizeHumanName('sister mary')).toBe('Sister. Mary');
+        });
+
+        test('Should handle international honorifics', () => {
+            expect(normalizeHumanName('herr schmidt')).toBe('Herr. Schmidt');
+            expect(normalizeHumanName('don corleone')).toBe('Don. Corleone');
+        });
+
         test('Should handle "St" as a title', () => expect(normalizeHumanName('st john')).toBe('St. John'));
         test('Should not add a second period if one already exists', () => expect(normalizeHumanName('mr. smith')).toBe('Mr. Smith'));
         test('Should handle multiple honorifics', () => expect(normalizeHumanName('sir prof smith')).toBe('Sir. Prof. Smith'));
@@ -27,6 +38,12 @@ describe('normalizeHumanName()', () => {
         test('Should force standard suffixes to uppercase', () => {
             expect(normalizeHumanName('robert downey jr')).toBe('Robert Downey JR');
             expect(normalizeHumanName('tony stark phd')).toBe('Tony Stark PHD');
+        });
+
+        test('Should handle professional and legal suffixes', () => {
+            expect(normalizeHumanName('jane doe esq')).toBe('Jane Doe ESQ');
+            expect(normalizeHumanName('lincoln wayne cpa')).toBe('Lincoln Wayne CPA');
+            expect(normalizeHumanName('sarah smith mba')).toBe('Sarah Smith MBA');
         });
 
         test('Should handle varied Roman numeral suffixes via Regex', () => {
@@ -49,6 +66,17 @@ describe('normalizeHumanName()', () => {
         test('Should keep particles lowercase when in the middle of a name', () => {
             expect(normalizeHumanName('leonardo di caprio')).toBe('Leonardo di Caprio');
             expect(normalizeHumanName('ludwig van beethoven')).toBe('Ludwig van Beethoven');
+        });
+
+        test('Should handle Germanic and Dutch particles', () => {
+            expect(normalizeHumanName('rembrandt van rijn')).toBe('Rembrandt van Rijn');
+            expect(normalizeHumanName('vincent vander pol')).toBe('Vincent vander Pol');
+        });
+
+        test('Should handle Iberian and Italian particles', () => {
+            expect(normalizeHumanName('vasco da gama')).toBe('Vasco da Gama');
+            expect(normalizeHumanName('luca della robbia')).toBe('Luca della Robbia');
+            expect(normalizeHumanName('jose y barra')).toBe('Jose y Barra');
         });
 
         test('Should handle Arabic particles in Latin script', () => {

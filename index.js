@@ -1,6 +1,6 @@
 /**
  * normalize-human-name - 🎓 Normalize real human names the way they’re actually written — fixes casing, particles, honorifics, suffixes, hyphenation, Mc/Mac and O’ prefixes into clean, properly formatted names.
- * @version: v1.0.4
+ * @version: v1.0.5
  * @link: https://github.com/tutyamxx/normalize-human-name
  * @license: MIT
  **/
@@ -28,9 +28,20 @@ const normalizeHumanName = (fullName) => {
     if (isArabic) return normalized?.replace?.(/\s+/g, ' ');
 
     const categories = {
-        honorifics: new Set(['mr', 'mrs', 'ms', 'dr', 'prof', 'sir', 'madam', 'lord', 'lady', 'st']),
-        suffixes: new Set(['jr', 'sr', 'phd', 'md']),
-        particles: new Set(['da', 'de', 'del', 'della', 'der', 'di', 'la', 'le', 'van', 'von', 'den', 'al', 'bin', 'ibn'])
+        honorifics: new Set([
+            'mr', 'mrs', 'ms', 'dr', 'prof', 'sir', 'madam', 'lord', 'lady', 'st',
+            'rev', 'fr', 'sister', 'br', 'rabbi', 'imam', 'pastor', 'mstr', 'don', 'dona',
+            'assoc', 'asst', 'dean', 'gen', 'col', 'maj', 'capt', 'lt', 'sgt', 'herr', 'frau'
+        ]),
+        suffixes: new Set([
+            'jr', 'sr', 'phd', 'md', 'ii', 'iii', 'iv', 'v', 'esq', 'dds', 'dvm', 'do',
+            'rn', 'np', 'pa', 'pharmd', 'cpa', 'cfa', 'mba', 'jd', 'obe', 'mbe'
+        ]),
+        particles: new Set([
+            'da', 'de', 'del', 'della', 'der', 'di', 'la', 'le', 'van', 'von', 'den',
+            'al', 'bin', 'ibn', 'du', 'des', 'vander', 'ten', 'ter', 'te', 'am', 'auf',
+            'zu', 'do', 'dos', 'das', 'e', 'y', 'lo', 'li'
+        ])
     };
 
     // --| Regex for Roman Numerals (I to XXXIX). Capped at 39 to avoid words like 'MIX' or 'DI' since it might cause issues
