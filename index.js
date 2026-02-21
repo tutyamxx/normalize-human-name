@@ -1,13 +1,13 @@
 /**
  * normalize-human-name - 🎓 Normalize real human names the way they’re actually written — fixes casing, particles, honorifics, suffixes, hyphenation, Mc/Mac and O’ prefixes into clean, properly formatted names.
- * @version: v1.0.6
+ * @version: v1.0.7
  * @link: https://github.com/tutyamxx/normalize-human-name
  * @license: MIT
  **/
 
 /**
- * Normalizes a human name by handling honorifics, suffixes, middle particles,
- * and complex casing (e.g., `McDonald`, `O'Brian`, `Smith-Jones`).
+ * Normalizes a human name by handling honorifics, suffixes, middle particles, and complex casing (e.g., `McDonald`, `O'Brian`, `Smith-Jones`).
+ *
  * @param fullName - The raw name string to normalize. Defaults to an empty string.
  * @returns The formatted and normalized name string.
  */
@@ -34,7 +34,7 @@ const normalizeHumanName = (fullName) => {
             'assoc', 'asst', 'dean', 'gen', 'col', 'maj', 'capt', 'lt', 'sgt', 'herr', 'frau'
         ]),
         suffixes: new Set([
-            'jr', 'sr', 'phd', 'md', 'ii', 'iii', 'iv', 'v', 'esq', 'dds', 'dvm', 'do',
+            'jr', 'sr', 'phd', 'md', 'esq', 'dds', 'dvm', 'do',
             'rn', 'np', 'pa', 'pharmd', 'cpa', 'cfa', 'mba', 'jd', 'obe', 'mbe'
         ]),
         particles: new Set([

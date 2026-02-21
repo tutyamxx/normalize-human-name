@@ -12,7 +12,6 @@
 # 🤔 Why this module is Versatile
 
 - Most name normalization functions simply capitalize the first letter of every word. `normalizeHumanName` is built to handle the "messy" reality of human nomenclature by implementing rules for honorifics, genealogical suffixes, and complex prefixes.
-- `0` Dependencies.
 
 ## Key Capabilities:
 * **🛡️ Context-Aware Particles**: Automatically keeps Dutch and Romance language particles (like `van`, `von`, `di`) lowercase, but only when they appear in the middle of a name.
@@ -26,17 +25,17 @@
 | Input Category | Example Input | Normalized Output | Why it’s handled this way |
 | :--- | :--- | :--- | :--- |
 | **Honorifics** | `dr stephen strange` | `Dr. Stephen Strange` | Detects titles and ensures a standardized trailing period. |
-| **Suffixes** | `robert downey jr` | `Robert Downey JR` | Identifies genealogical and professional suffixes to force uppercase. |
-| **Middle Particles** | `vincent van gogh` | `Vincent van Gogh` | Particles stay lowercase between names but capitalize at boundaries. |
-| **Hyphenated Gaelic** | `o'brian-mcdonald` | `O’Brian-McDonald` | Recursively handles multiple delimiters and converts to smart apostrophes. |
-| **Exclusion Logic** | `macy gray` | `Macy Gray` | Prevents "Mac" logic from triggering on names that aren't actually prefixes. |
+| **Suffixes** | `robert downey jr` | `Robert Downey JR` | Identifies `genealogical` and `professional` suffixes to force uppercase. |
+| **Middle Particles** | `vincent van gogh` | `Vincent van Gogh` | `Particles` stay lowercase between names but capitalize at boundaries. |
+| **Hyphenated Gaelic** | `o'brian-mcdonald` | `O’Brian-McDonald` | Recursively handles multiple delimiters and converts to `smart apostrophes`. |
+| **Exclusion Logic** | `macy gray` | `Macy Gray` | Prevents `"Mac"` logic from triggering on names that aren't actually prefixes. |
 | **Unicode Normalization** | `REN\u0065\u0301` | `René` | Collapses decomposed accents into single characters before processing. |
 | **Sanitization** | `  JOHN    DOE  ` | `John Doe` | Collapses internal whitespace and trims the string. |
 | **Arabic Script** | `نجيب محفوظ` | `نجيب محفوظ` | Detects `Arabic Unicode` script and returns `as-is` (Arabic has no concept of casing). |
 | **CJK Script** | `佐藤  健` | `佐藤健` | Detects `Han`/`Hiragana`/`Katakana`/`Hangul` and removes internal whitespace. |
-| **Expanded Honorifics**| `rev brown` | `Rev. Brown` | Now supports religious (Rev, Sister, Rabbi) and formal (Don, Herr) titles. |
-| **Professional Suffixes**| `jane doe cpa` | `Jane Doe CPA` | Forces uppercase for business and medical credentials (CPA, MBA, JD, DDS). |
-| **International Particles**| `luca della robbia` | `Luca della Robbia` | Handles extended Romance (della, dos) and Germanic (vander, zu) connectors. |
+| **Expanded Honorifics**| `rev brown` | `Rev. Brown` | Now supports religious (`Rev`, `Sister`, `Rabbi`) and formal (`Don`, `Herr`) titles. |
+| **Professional Suffixes**| `jane doe cpa` | `Jane Doe CPA` | Forces uppercase for business and medical credentials (`CPA`, `MBA`, `JD`, `DDS`). |
+| **International Particles**| `luca della robbia` | `Luca della Robbia` | Handles extended Romance (`della`, `dos`) and Germanic (`vander`, `zu`) connectors. |
 | **Roman Numerals** | `king henry viii` | `King Henry VIII` | Uses strict regex to distinguish valid Roman numerals from regular words. |
 
 ---
