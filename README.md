@@ -7,8 +7,9 @@
 
 * 🎓 Normalize real human names the way they’re actually written — fixes casing, particles, honorifics, suffixes, hyphenation, Mc/Mac and O’ prefixes into clean, properly formatted names.
 * ♻️ Works seamlessly with `CommonJS`, `ESM` and `TypeScript`
+* `0` Dependencies
 
-# Why this module is Versatile 🚀
+# 🤔 Why this module is Versatile
 
 - Most name normalization functions simply capitalize the first letter of every word. `normalizeHumanName` is built to handle the "messy" reality of human nomenclature by implementing rules for honorifics, genealogical suffixes, and complex prefixes.
 - `0` Dependencies.
@@ -33,7 +34,10 @@
 | **Sanitization** | `  JOHN    DOE  ` | `John Doe` | Collapses internal whitespace and trims the string. |
 | **Arabic Script** | `نجيب محفوظ` | `نجيب محفوظ` | Detects `Arabic Unicode` script and returns `as-is` (Arabic has no concept of casing). |
 | **CJK Script** | `佐藤  健` | `佐藤健` | Detects `Han`/`Hiragana`/`Katakana`/`Hangul` and removes internal whitespace. |
-| **Type Safety** | `null` or `12345` | `''` | Uses optional chaining and type checks to fail gracefully without throwing errors. |
+| **Expanded Honorifics**| `rev brown` | `Rev. Brown` | Now supports religious (Rev, Sister, Rabbi) and formal (Don, Herr) titles. |
+| **Professional Suffixes**| `jane doe cpa` | `Jane Doe CPA` | Forces uppercase for business and medical credentials (CPA, MBA, JD, DDS). |
+| **International Particles**| `luca della robbia` | `Luca della Robbia` | Handles extended Romance (della, dos) and Germanic (vander, zu) connectors. |
+| **Roman Numerals** | `king henry viii` | `King Henry VIII` | Uses strict regex to distinguish valid Roman numerals from regular words. |
 
 ---
 

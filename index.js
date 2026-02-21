@@ -1,6 +1,6 @@
 /**
  * normalize-human-name - 🎓 Normalize real human names the way they’re actually written — fixes casing, particles, honorifics, suffixes, hyphenation, Mc/Mac and O’ prefixes into clean, properly formatted names.
- * @version: v1.0.5
+ * @version: v1.0.6
  * @link: https://github.com/tutyamxx/normalize-human-name
  * @license: MIT
  **/
